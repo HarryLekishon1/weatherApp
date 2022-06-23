@@ -51,3 +51,11 @@ function displayWeather(data) {
      }
 
 }
+
+locationBtn.addEventListener("click", () => {
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(onSucces, onError);
+    }else{
+        alert("Your browser not support geolocation api");
+    }
+})
