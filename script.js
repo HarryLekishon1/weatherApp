@@ -20,3 +20,19 @@ const getWeather = function(city){
    .then((resp) => resp.json())
    .then((data) => displayWeather(data))
 }
+
+getWeather(city);
+function displayWeather(data) {
+    if(searchcity.value === ''){
+        city.innerText = 'Please search a city'
+    }
+    else if(data.cod == "404"){
+        city.innerText = `${searchcity.value} isn't a valid city name`;
+        temprature.innerText = '';
+        desc.innerText = '';
+        icond.src = '';
+        humidity.innerText = '';
+        winds.innerText = '';
+    }
+
+}
