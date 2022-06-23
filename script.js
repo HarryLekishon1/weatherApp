@@ -33,6 +33,21 @@ function displayWeather(data) {
         icond.src = '';
         humidity.innerText = '';
         winds.innerText = '';
-    }
+    }else{
+        const country = data.sys.country; 
+        const{name} = data;
+        const {icon, description} = data.weather[0];
+        const {temp, humidity} = data.main;
+        const {speed} = data.wind;
+        console.log(name,icon,description,temp,humidity,speed)
+ 
+        city.innerText = name +" ,"+ country;
+        temprature.innerText =  temp+"°C";
+         icond.src = "https://openweathermap.org/img/wn/" + icon + ".png"
+         desc.innerText = description;
+         humidity.innerText = humidity
+         winds.innerText = "speed of wind = "+ speed+ " km/h";
+         
+     }
 
 }
