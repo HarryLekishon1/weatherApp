@@ -9,3 +9,14 @@ const desc = document.querySelector(".description")
 const searchcity = document.querySelector(".search-bar")
 const searchButton = document.querySelector(".search button")
 const locationBtn = document.querySelector(".locationBtn")
+
+search();
+search2()
+
+const getWeather = function(city){
+    fetch("https://api.openweathermap.org/data/2.5/weather?q="
+    + city + "&units=metric&appid=" 
+    +apiKey)
+   .then((resp) => resp.json())
+   .then((data) => displayWeather(data))
+}
