@@ -22,10 +22,17 @@ const getWeather = function(city){
 }
 
 getWeather(city);
+//display the weather on document
 function displayWeather(data) {
+    //ensure a value is typed and clears form when nothing is typed and enter clicked
     if(searchcity.value === ''){
         city.innerText = 'Please search a city'
-    }
+          temprature.innerText = '';
+        desc.innerText = '';
+        icond.src = '';
+        humidity.innerText = '';
+        winds.innerText = '';
+    }//return message if city doesnt exist
     else if(data.cod == "404"){
         city.innerText = `${searchcity.value} isn't a valid city name`;
         temprature.innerText = '';
@@ -33,7 +40,7 @@ function displayWeather(data) {
         icond.src = '';
         humidity.innerText = '';
         winds.innerText = '';
-    }else{
+    }else{//return data when a valid entry is enterd
         const country = data.sys.country; 
         const{name} = data;
         const {icon, description} = data.weather[0];
@@ -51,7 +58,23 @@ function displayWeather(data) {
      }
 
 }
-
+//event listener for the search button 
+function search(){
+    searchButton.addEventListener('click' ,() => {
+        getWeather(searchcity.value);
+    });
+    
+}
+//event listener for enter button
+function search2(){
+    searchcity.addEventListener('keyup' , (event) => {
+        if(event.key === "Enter"){
+        getWeather(searchcity.value);
+        }
+    });
+    
+}
+//event listener to get current location weather
 locationBtn.addEventListener("click", () => {
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(onSucces, onError);
@@ -59,19 +82,19 @@ locationBtn.addEventListener("click", () => {
         alert("Your browser not support geolocation api");
     }
 });
-
+//get coordinates if browers supports location
 function onSucces(position) {
     const {latitude, longitude} =position.coords;
     api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=9d7cde1f6d07ec55650544be1631307e`;
     fetchData(); 
 }
-
+//fetch current location weather
 function fetchData() {
     fetch(api)
     .then(resp => resp.json())
     .then((data) => displayWeather2(data))
 }
-
+//display current location weather
 function displayWeather2(data){
     const country = data.sys.country; 
     const{name} = data;
@@ -90,23 +113,8 @@ function displayWeather2(data){
 }
 
 function onError(error){
-    // if any error occur while getting user location then we'll show it in infoText
+    // if any error occur while getting user location then we'll show it in city element
     city.innerText = error.message;
     city.classList.add("error");
 }
 
-function search(){
-    searchButton.addEventListener('click' ,() => {
-        getWeather(searchcity.value);
-    });
-    
-}
-
-function search2(){
-    searchcity.addEventListener('keyup' , (event) => {
-        if(event.key === "Enter"){
-        getWeather(searchcity.value);
-        }
-    });
-    
-}
