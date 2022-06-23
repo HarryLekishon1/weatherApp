@@ -71,3 +71,13 @@ function fetchData() {
     .then(resp => resp.json())
     .then((data) => displayWeather2(data))
 }
+
+function displayWeather2(data){
+    const country = data.sys.country; 
+    const{name} = data;
+    const {icon, description} = data.weather[0];
+    const {temp, humidity} = data.main;
+    const {speed} = data.wind;
+    console.log(name,icon,description,temp,humidity,speed);
+
+}
