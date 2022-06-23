@@ -1,6 +1,6 @@
 >## ***Weather app***
 ---
-    -> A project that involved using an external API to fetch data from diffent cities or your current location. the fornt end is developed using HTML and css. JavaScripts get the API data in JSON format and display it on the web page
+ A project that involved using an external API to fetch data from diffent cities or your current location. the fornt end is developed using HTML and css. JavaScripts get the API data in JSON format and display it on the web page
 
 ## **Getting Started**
 ---
