@@ -94,3 +94,10 @@ function onError(error){
     city.innerText = error.message;
     city.classList.add("error");
 }
+
+function search(){
+    searchButton.addEventListener('click' ,() => {
+        getWeather(searchcity.value);
+    });
+    
+}
