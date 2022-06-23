@@ -80,4 +80,11 @@ function displayWeather2(data){
     const {speed} = data.wind;
     console.log(name,icon,description,temp,humidity,speed);
 
+    city.innerText = name +" ,"+ country;
+    temprature.innerText =  temp+"°C";
+     icond.src = "https://openweathermap.org/img/wn/" + icon + ".png"
+     desc.innerText = description;
+     humidity.innerText = humidity
+     winds.innerText = "speed of wind = "+ speed+ " km/h";
+
 }
