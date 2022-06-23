@@ -58,4 +58,10 @@ locationBtn.addEventListener("click", () => {
     }else{
         alert("Your browser not support geolocation api");
     }
-})
+});
+
+function onSucces(position) {
+    const {latitude, longitude} =position.coords;
+    api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=9d7cde1f6d07ec55650544be1631307e`;
+    fetchData(); 
+}
