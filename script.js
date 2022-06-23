@@ -101,3 +101,12 @@ function search(){
     });
     
 }
+
+function search2(){
+    searchcity.addEventListener('keyup' , (event) => {
+        if(event.key === "Enter"){
+        getWeather(searchcity.value);
+        }
+    });
+    
+}
