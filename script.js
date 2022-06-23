@@ -88,3 +88,9 @@ function displayWeather2(data){
      winds.innerText = "speed of wind = "+ speed+ " km/h";
 
 }
+
+function onError(error){
+    // if any error occur while getting user location then we'll show it in infoText
+    city.innerText = error.message;
+    city.classList.add("error");
+}
