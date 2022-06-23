@@ -65,3 +65,9 @@ function onSucces(position) {
     api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=9d7cde1f6d07ec55650544be1631307e`;
     fetchData(); 
 }
+
+function fetchData() {
+    fetch(api)
+    .then(resp => resp.json())
+    .then((data) => displayWeather2(data))
+}
